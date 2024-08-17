@@ -34,7 +34,7 @@ function loadStyleMode() {
     toggleButton.textContent = "☀️";
     document.body.classList.add("dark-mode");
   } else if (currentTheme == "light") {
-    toggleButton.textContent = "🌖";
+    toggleButton.textContent = "🌑";
   }
 }
 

@@ -7,6 +7,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .main-box {
@@ -17,6 +18,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   position: relative;
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .box {
@@ -24,6 +26,7 @@ body {
   padding: 1rem;
   background: #f9f9f9;
   border-radius: 8px;
+  transition: background 0.3s;
 }
 
 h1 {
@@ -55,12 +58,12 @@ h1 {
 }
 
 .toggle-button {
-  background-color: #96a1aa;
+  background-color: #6c757d5e;
   color: #ffffff;
 }
 
 .toggle-button:hover {
-  background-color: #5a6268;
+  background-color: #5a626882;
 }
 
 .toggle-button:focus {
@@ -116,5 +119,64 @@ h1 {
 }
 
 .task-options span:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode .main-box {
+  background: #333333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .box {
+  background: #333333;
+}
+
+body.dark-mode h1 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .add-btn {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+body.dark-mode .add-btn:hover {
+  background-color: #0056b3;
+}
+
+body.dark-mode .toggle-button {
+  background-color: #5a6268;
+}
+
+body.dark-mode .toggle-button:hover {
+  background-color: #6c757dc0;
+}
+
+body.dark-mode #task-input {
+  border: 1px solid #555;
+  background: #666;
+  color: #e0e0e0;
+}
+
+body.dark-mode #task-input:focus {
+  border-color: #007bff;
+}
+
+body.dark-mode .task-item {
+  background: #555555;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .task-options {
+  color: #007bff;
+}
+
+body.dark-mode .task-options span:hover {
   text-decoration: underline;
 }
