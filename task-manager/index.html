@@ -16,23 +16,16 @@
             </h1>
             <button>☀️</button>
         </div>
-        <form class="box centered-content">
-            <input type="text" placeholder="Enter a new task" required>
+        <form id="task-form" class="box centered-content">
+            <input id="task-input" type="text" placeholder="Enter a new task" required>
             <button type="submit">Add Task</button>
         </form>
-        <ul class="box">
+        <ul id="task-list" class="box">
             <li class="task-item">
                 <p>task</p>
                 <div class="task-options">
-                    <span>Borrar</span>
-                    <span>Editar</span>
-                </div>
-            </li>
-            <li class="task-item">
-                <p>task</p>
-                <div class="task-options">
-                    <span>Borrar</span>
-                    <span>Editar</span>
+                    <span class="delete-btn">Delete</span>
+                    <span class="edit-btn">Edit</span>
                 </div>
             </li>
         </ul>
