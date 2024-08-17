@@ -2,6 +2,8 @@ const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
 
+loadTasks();
+
 function newTask(name) {
   const newTask = document.createElement("li");
   newTask.className = "task-item";
@@ -27,6 +29,20 @@ function newTask(name) {
   return newTask;
 }
 
+function storeTask(task) {
+  const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+  tasks.push(task);
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+  tasks.forEach((task) => {
+    taskList.appendChild(newTask(task));
+  });
+}
+
 function deleteTask(task) {
   if (confirm("Are you sure that you want to delete the task?")) {
     task.remove();
@@ -43,6 +59,7 @@ function editTask(task) {
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const task = newTask(taskInput.value);
+  storeTask(taskInput.value);
   taskList.appendChild(task);
   taskInput.value = "";
 });
