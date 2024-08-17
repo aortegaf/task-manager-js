@@ -4,6 +4,28 @@ const taskList = document.getElementById("task-list");
 
 loadTasks();
 
+// LocalStorage functions
+function storeTask(task) {
+  const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+  tasks.push(task);
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function updateTasks() {
+  const tasks = Array.from(taskList.querySelectorAll("li"));
+  const updatedTasks = tasks.map((task) => task.firstElementChild.textContent);
+  localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+}
+
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+  tasks.forEach((task) => {
+    taskList.appendChild(newTask(task));
+  });
+}
+
+// DOM manipulation functions
 function newTask(name) {
   const newTask = document.createElement("li");
   newTask.className = "task-item";
@@ -29,20 +51,6 @@ function newTask(name) {
   return newTask;
 }
 
-function storeTask(task) {
-  const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-  tasks.push(task);
-
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-function loadTasks() {
-  const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-  tasks.forEach((task) => {
-    taskList.appendChild(newTask(task));
-  });
-}
-
 function deleteTask(task) {
   if (confirm("Are you sure that you want to delete the task?")) {
     task.remove();
@@ -53,9 +61,11 @@ function editTask(task) {
   const editedTask = prompt("Edit task:", task.firstElementChild.textContent);
   if (editedTask !== null && editedTask !== "") {
     task.firstElementChild.textContent = editedTask;
+    updateTasks();
   }
 }
 
+// Event listeners
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const task = newTask(taskInput.value);
