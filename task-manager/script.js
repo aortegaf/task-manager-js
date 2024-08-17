@@ -7,14 +7,14 @@ function newTask(name) {
   newTask.className = "task-item";
 
   const taskName = document.createElement("p");
-  taskName.innerText = name;
+  taskName.textContent = name;
 
   const deleteOption = document.createElement("span");
   deleteOption.className = "delete-btn";
-  deleteOption.innerText = "Delete";
+  deleteOption.textContent = "Delete";
   const editOption = document.createElement("span");
   editOption.className = "edit-btn";
-  editOption.innerText = "Edit";
+  editOption.textContent = "Edit";
 
   const taskOptions = document.createElement("div");
   taskOptions.className = "task-options";
@@ -33,17 +33,24 @@ function deleteTask(task) {
   }
 }
 
+function editTask(task) {
+  const editedTask = prompt("Edit task:", task.firstElementChild.textContent);
+  if (editedTask !== null && editedTask !== "") {
+    task.firstElementChild.textContent = editedTask;
+  }
+}
+
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
   const task = newTask(taskInput.value);
   taskList.appendChild(task);
-
   taskInput.value = "";
 });
 
 taskList.addEventListener("click", (event) => {
   if (event.target.className == "delete-btn") {
     deleteTask(event.target.parentElement.parentElement);
+  } else if (event.target.className == "edit-btn") {
+    editTask(event.target.parentElement.parentElement);
   }
 });
