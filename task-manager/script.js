@@ -27,6 +27,12 @@ function newTask(name) {
   return newTask;
 }
 
+function deleteTask(task) {
+  if (confirm("Are you sure that you want to delete the task?")) {
+    task.remove();
+  }
+}
+
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -34,4 +40,10 @@ taskForm.addEventListener("submit", (event) => {
   taskList.appendChild(task);
 
   taskInput.value = "";
+});
+
+taskList.addEventListener("click", (event) => {
+  if (event.target.className == "delete-btn") {
+    deleteTask(event.target.parentElement.parentElement);
+  }
 });
