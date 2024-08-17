@@ -11,17 +11,14 @@
 <body>
     <div class="main-box">
         <div class="box centered-content">
-            <h1>
-                Task Manager
-            </h1>
-            <button>☀️</button>
+            <h1>Task Manager</h1>
+            <button id="toggle-button" class="toggle-button"></button>
         </div>
         <form id="task-form" class="box centered-content">
             <input id="task-input" type="text" placeholder="Enter a new task" required>
-            <button type="submit">Add Task</button>
+            <button class="add-btn" type="submit">Add Task</button>
         </form>
-        <ul id="task-list" class="box">
-        </ul>
+        <ul id="task-list" class="box"></ul>
     </div>
 
     <script src="script.js"></script>
